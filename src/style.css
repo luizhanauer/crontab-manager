@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-bg: #090c10;
+  --color-neon-surface: #111827;
+  --color-neon-accent: #0ea5e9;
+  --color-neon-accent-glow: rgba(14, 165, 233, 0.4);
+  --color-neon-success: #10b981;
+  --color-neon-error: #ef4444;
+  --color-neon-border: #1e293b;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* Correção Tailwind v4: Usar var() diretamente para as cores base do theme */
+body {
+  background-color: var(--color-neon-bg);
+  color: #cbd5e1; /* Equivalente ao text-slate-300 */
+  @apply font-sans antialiased min-h-screen;
+  
+  position: relative;
+  /* Essencial na Opção 2 para evitar barra de rolagem horizontal devido aos pseudo-elementos */
+  overflow-x: hidden; 
+}
+
+::selection {
+  background-color: var(--color-neon-accent);
+  color: #ffffff;
+}
+
+/* Utilitários personalizados para o brilho Neon */
+.shadow-neon {
+  box-shadow: 0 0 10px var(--color-neon-accent-glow);
+}
+
+.shadow-neon-hover:hover {
+  box-shadow: 0 0 15px var(--color-neon-accent-glow), 0 0 30px var(--color-neon-accent-glow);
+}
+
+/* =========================================
+   ANIMAÇÃO DE AMBIENTE: GLOW PULSANTE
+   ========================================= */
+
+/* Esfera Superior Esquerda (Ciano) */
+body::before {
+  content: "";
+  position: fixed;
+  top: -20%;
+  left: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, var(--color-neon-accent-glow) 0%, transparent 60%);
+  opacity: 0.3;
+  animation: pulseGlow 12s ease-in-out infinite alternate;
+  z-index: -1;
+  pointer-events: none; /* Garante que os cliques passam através do brilho */
+}
+
+/* Esfera Inferior Direita (Verde Sucesso) */
+body::after {
+  content: "";
+  position: fixed;
+  bottom: -20%;
+  right: -10%;
+  width: 70vw;
+  height: 70vw;
+  /* Usando o verde de sucesso para criar um contraste tecnológico */
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 60%);
+  opacity: 0.2;
+  animation: pulseGlow 18s ease-in-out infinite alternate-reverse;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.4;
+  }
+}
