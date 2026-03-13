@@ -1,7 +1,7 @@
 <p align="center">
   <!-- Você pode criar uma logo e colocar o link aqui -->
   <img src="./public/logo.svg" alt="Crontab Manager Logo" width="150"/>
-  <h1 align="center">⚡ Crontab Manager</h1>
+  <h1 align="center">Crontab Manager</h1>
 </p>
 
 <p align="center">
