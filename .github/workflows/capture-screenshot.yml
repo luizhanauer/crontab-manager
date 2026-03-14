@@ -55,7 +55,7 @@ jobs:
             };
 
             await takeShot(1280, 720, 'screenshot.png');
-            await takeShot(1280, 520, 'screenshot_featured.png');
+            await takeShot(1280, 640, 'screenshot_featured.png');
             await takeShot(1000, 600, 'screenshot-desktop.png');
             await takeShot(600, 1000, 'screenshot-mobile.png');
 
